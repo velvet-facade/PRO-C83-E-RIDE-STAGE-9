@@ -63,7 +63,7 @@ export default class RideScreen extends Component {
 
     if (!transactionType) {
       this.setState({ bikeId: "" });
-      Alert.alert("Kindly enter/scan valid bike id");
+      alert("Kindly enter/scan valid bike id");
     } else if (transactionType === "under_maintenance") {
       this.setState({
         bikeId: ""
@@ -74,7 +74,7 @@ export default class RideScreen extends Component {
       if (isEligible) {
         var { bikeType, userName } = this.state;
         this.assignBike(bikeId, userId, bikeType, userName);
-        Alert.alert(
+        alert(
           "You have rented the bike for next 1 hour. Enjoy your ride!!!"
         );
         this.setState({
@@ -96,7 +96,7 @@ export default class RideScreen extends Component {
       if (isEligible) {
         var { bikeType, userName } = this.state;
         this.returnBike(bikeId, userId, bikeType, userName);
-        Alert.alert("We hope you enjoyed your ride");
+        alert("We hope you enjoyed your ride");
         this.setState({
           bikeAssigned: false
         });
@@ -156,7 +156,7 @@ export default class RideScreen extends Component {
           transactionType = doc.data().is_bike_available ? "rented" : "return";
         } else {
           transactionType = "under_maintenance";
-          Alert.alert(doc.data().maintenance_message);
+          alert(doc.data().maintenance_message);
         }
       });
     }
@@ -176,14 +176,14 @@ export default class RideScreen extends Component {
         bikeId: ""
       });
       isUserEligible = false;
-      Alert.alert("Invalid user id");
+      alert("Invalid user id");
     } else {
       userRef.docs.map(doc => {
         if (!doc.data().bike_assigned) {
           isUserEligible = true;
         } else {
           isUserEligible = false;
-          Alert.alert("End the current ride to rent another bike.");
+          alert("End the current ride to rent another bike.");
           this.setState({
             bikeId: ""
           });
@@ -207,7 +207,7 @@ export default class RideScreen extends Component {
         isUserEligible = true;
       } else {
         isUserEligible = false;
-        Alert.alert("This bike is rented by another user");
+        alert("This bike is rented by another user");
         this.setState({
           bikeId: ""
         });
