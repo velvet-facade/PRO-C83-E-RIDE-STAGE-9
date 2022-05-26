@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
-  
+  FlatList
 } from "react-native";
 import { Avatar, ListItem, Icon } from "react-native-elements";
 import firebase from "firebase";
@@ -139,8 +139,8 @@ export default class RideHistoryScreen extends Component {
         </View>
         <View style={styles.lowerContainer}>
           <FlatList
-            data={} /*allTransactions */
-            renderItem={} /*this.renderItem*/
+            data={allTransactions} /*allTransactions */
+            renderItem={this.renderItem} /*this.renderItem*/
             keyExtractor={
               (item, index) => index.toString()
             }
